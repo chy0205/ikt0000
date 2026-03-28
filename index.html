@@ -260,7 +260,7 @@ function renderContentBody(mainBlock, row, fontSize) {
         // 估算最後一行寬度 (包含 HTML 標籤內容)
         const lastLineTextOnly = lastLine.replace(/<[^>]*>/g, "");
         const lastLinePx = lastLineTextOnly.length * (fontSize + BASE_LETTER_SPACING_PX);
-        const areaPx = areaText.length * (22 + BASE_LETTER_SPACING_PX);
+        const areaPx = areaText.length * (fontSize + BASE_LETTER_SPACING_PX);
         
         if(lastLinePx + areaPx + 50 < 1210) {
             finalContentHtml += areaHtml;
