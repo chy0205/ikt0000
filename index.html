@@ -76,7 +76,7 @@
 
         .header-block { right: 10px; width: 140px; }
         .main-content-block { right: 120px; width: calc(100% - 180px); }
-        .small-text { font-size: 22px; font-weight: 900; white-space: nowrap; }
+        .small-text { font-size: 34px; font-weight: 900; white-space: nowrap; }
 
         /* --- 浮動控制 UI --- */
         .card-ui-overlay {
@@ -260,7 +260,7 @@ function renderContentBody(mainBlock, row, fontSize) {
         // 估算最後一行寬度 (包含 HTML 標籤內容)
         const lastLineTextOnly = lastLine.replace(/<[^>]*>/g, "");
         const lastLinePx = lastLineTextOnly.length * (fontSize + BASE_LETTER_SPACING_PX);
-        const areaPx = areaText.length * (fontSize + BASE_LETTER_SPACING_PX);
+        const areaPx = areaText.length * (22 + BASE_LETTER_SPACING_PX);
         
         if(lastLinePx + areaPx + 50 < 1210) {
             finalContentHtml += areaHtml;
@@ -315,13 +315,13 @@ async function applyFilter() {
             <input type="range" min="34" max="60" value="${initialFontSize}" 
                    oninput="updateCardFontSize(${index}, this.value)">
             <div class="download-button-wrapper">
-                <button class="btn-primary" style="width:100%" onclick="saveSingle(this.closest('.result-item'), '${row['區域']}-${row['姓名']}')">單張下載 PNG</button>
+                <button class="btn-primary" style="width:100%" onclick="saveSingle(this.closest('.result-item'), '${row['姓名']}')">單張下載 PNG</button>
             </div>
         `;
         wrap.appendChild(uiOverlay);
 
         container.appendChild(wrap);
-        itemsToDownload.push({ el: wrap, name: `${row['區域']}-${row['姓名']}`, data: row });
+        itemsToDownload.push({ el: wrap, name: `${row['姓名']}`, data: row });
     });
     
     document.getElementById('downloadAllBtn').disabled = false;
@@ -379,4 +379,3 @@ window.onload = init;
 
 </body>
 </html>
-
